@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {flatMap} from "tslint/lib/utils";
 
 @Component({
   selector: 'app-servers',
@@ -10,6 +11,7 @@ export class ServersComponent implements OnInit {
   serverCreationStatus = 'No Server was created!';
   serverName = 'Stateless';
   allowNewServer = false;
+  serverCreated = false;
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
@@ -20,7 +22,8 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer() {
-    this.serverCreationStatus = "Server is created!"
+    this.serverCreated = true;
+    this.serverCreationStatus = "Server is created is " + this.serverName;
   }
 
   onUpdateServerName(event:Event){
